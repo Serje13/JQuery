@@ -1,0 +1,53 @@
+<!-- Приложение, которое  при загрузке страницы отрисовывает 3 прмоугольника и окрашивает в разные рандомные цвета.
+    При наведении на каждый из прямоугольников меняет его цвет через 2 секунды-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div class="myDiv"> 
+        <div  id = "myD1" style="width:100%; height:300px">1Прямоугольник</div>
+        <div  id = "myD2" style="width:100%; height:300px">2Прямоугольник</div>
+        <div id = "myD3" style="width:100%; height:300px">3Прямоугольник</div>
+      </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+function getRC() {
+    var letters = 'ABCDE'.split('');
+    var color = '#';
+    for (var i=0; i < 3; i++ ) {
+        color += letters[Math.floor(Math.random() * letters.length)];
+    }
+    return color;
+}
+$(document).ready(function() {
+  $("#myD1").css("background-color", getRC);
+  $("#myD2").css("background-color", getRC);
+  $("#myD3").css("background-color", getRC);
+});
+
+$("#myD1").bind('mouseover', function() {
+  setTimeout(function() { 
+    $("#myD1").css("background-color", getRC);
+  }, 2000);
+});
+
+$("#myD2").bind('mouseover', function() {
+  setTimeout(function() { 
+    $("#myD2").css("background-color", getRC);
+  }, 2000);
+});
+
+$("#myD3").bind('mouseover', function() {
+  setTimeout(function() { 
+    $("#myD3").css("background-color", getRC);
+  }, 2000);
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!--Приложение, которое с интервалом 1500 мс в случайном порядке передвигает прямоугольники,
+при изменении цвета меняет ширину и высоту прямоугольников-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+  <body>
+        <div class="myDiv"> 
+          <div  class = "myD1" style="width:100%; height:100px; background-color: blue">1Прямоугольник</div>
+          <div  class = "myD2" style="width:100%; height:100px; background-color: brown">2Прямоугольник</div>
+          <div  class = "myD3" style="width:100%; height:100px; background-color: coral">3Прямоугольник</div>
+        </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".myD1").bind('mouseover', function() {
+    setTimeout(function() { 
+      $('.myD1').insertBefore($('.myD2'));
+      $('.myD2').width(function(index, curVal) {
+        return curVal - 25;});
+      $('.myD2').height(function(index, curVal) {
+        return curVal + 25;});
+    }, 1500);
+  });
+  $(".myD2").bind('mouseover', function() {
+    setTimeout(function() { 
+      $('.myD2').insertBefore($('.myD3'));
+      $('.myD3').width(function(index, curVal) {
+        return curVal - 25;});
+      $('.myD3').height(function(index, curVal) {
+        return curVal + 25;});
+    }, 1500);
+  });
+  $(".myD3").bind('mouseover', function() {
+    setTimeout(function() { 
+      $('.myD3').insertBefore($('.myD1'));
+      $('.myD1').width(function(index, curVal) {
+        return curVal - 25;});
+      $('.myD1').height(function(index, curVal) {
+        return curVal + 25;});
+  }, 1500);
+  });
+});
+</script>
+</body>
+</html>
